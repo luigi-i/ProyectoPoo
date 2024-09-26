@@ -1,23 +1,25 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class Vehiculo {
+
     private String modelo;
-    private int Cantidad_de_servicios;
     private String marca;
     private int year;
-    private int km;
+    private double km;
     private int id;
-    private List<Servicio> Servicio;
+    private ArrayList<Servicio> Servicios;
 
-    public void Vehiculo(String modelo,int Cantidad_de_servicios,String marca, int year, int km, int id){
+    public Vehiculo(String modelo,String marca, int year, double km){
         this.modelo=modelo;
         this.marca = marca;
         this.year = year;
         this.km = km;
-        this.id = id;
-        this.Servicio=new ArrayList<>();
+        this.Servicios = new ArrayList<>();
 
     }
 
@@ -26,12 +28,6 @@ public class Vehiculo {
     }
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-    public int getCantidad_de_servicios() {
-        return Cantidad_de_servicios;
-    }
-    public void setCantidad_de_servicios(int cantidad_de_servicios) {
-        Cantidad_de_servicios = cantidad_de_servicios;
     }
     public String getMarca() {
         return marca;
@@ -45,23 +41,20 @@ public class Vehiculo {
     public void setYear(int year) {
         this.year = year;
     }
-    public int getKm() {
+    public double getKm() {
         return km;
     }
-    public void setKm(int km) {
+    public void setKm(double km) {
         this.km = km;
     }
-    public int getId() {
-        return id;
+
+    public ArrayList<Servicio> getServicios() {
+        return Servicios;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public List<Servicio> getServicio() {
-        return Servicio;
-    }
-    public void setServicio(List<Servicio> servicio) {
-        Servicio = servicio;
+
+    public void addServicio(Servicio servicio) {
+
+        Servicios.add(servicio); ;
     }
     
 }
