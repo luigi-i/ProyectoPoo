@@ -1,8 +1,5 @@
-import java.util.List;
 import java.util.ArrayList;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 
 
 public class Vehiculo {
@@ -11,7 +8,6 @@ public class Vehiculo {
     private String marca;
     private int year;
     private double km;
-    private int id;
     private ArrayList<Servicio> Servicios;
 
     public Vehiculo(String modelo,String marca, int year, double km){
