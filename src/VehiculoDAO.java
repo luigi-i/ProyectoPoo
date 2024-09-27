@@ -9,7 +9,7 @@ public class VehiculoDAO {
         String sqlLimpiarVehiculos = "DELETE FROM vehiculos";
         String sqlLimpiarServicios = "DELETE FROM servicios";
         String sqlResetId = "DELETE FROM sqlite_sequence WHERE name='vehiculos'";
-        String sqlResetID = "DELETE FROM sqlite_sequence WHERE name='servicios'";
+        String sqlResetIDService = "DELETE FROM sqlite_sequence WHERE name='servicios'";
 
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {
@@ -17,7 +17,7 @@ public class VehiculoDAO {
             stmt.execute(sqlLimpiarServicios);  // Limpia los registros de servicios
             stmt.execute(sqlLimpiarVehiculos);  // Limpia los registros de vehiculos
             stmt.execute(sqlResetId);  // Reinicia el ID de los vehiculos cada que se borra la tabla
-            stmt.execute(sqlResetId); // Reinicia el ID de los serivicios cada que se borra la tabla
+            stmt.execute(sqlResetIDService); // Reinicia el ID de los serivicios cada que se borra la tabla
             System.out.println("Base de datos limpiada y ID reiniciado.");
 
         } catch (SQLException e) {
@@ -137,6 +137,8 @@ public class VehiculoDAO {
         Vehiculo v = new Vehiculo("CR-V", "Honda", 2020, 12000);
         v.addServicio(new Servicio("Cambio de aceite", 1));
         v.addServicio(new Servicio("Alineación", 1));
+
+
         insertarVehiculo(v);
 
         // Obtener todos los vehículos y servicios
