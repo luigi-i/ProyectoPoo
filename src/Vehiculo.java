@@ -14,6 +14,8 @@ public class Vehiculo {
         this.year = year;
         this.km = km;
         this.servicios = new ArrayList<>();  // Inicializa la lista de servicios
+
+        VehiculoDAO.insertarVehiculo(this);
     }
 
     // Métodos Getter
@@ -40,6 +42,7 @@ public class Vehiculo {
     // Método para agregar un servicio
     public void addServicio(Servicio servicio) {
         servicios.add(servicio);
+        VehiculoDAO.agregarServicio(1, servicio);
     }
 
     // Método para buscar un servicio por nombre
