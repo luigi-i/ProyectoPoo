@@ -2,20 +2,21 @@ import java.util.ArrayList;
 
 public class Vehiculo {
 
-    private final String modelo;
-    private final  String marca;
-    private final int year;
-    private final double km;
-    private final ArrayList<Servicio> servicios;
+    private String modelo;
+    private String marca;
+    private int year;
+    private double km;
+    private final ArrayList<Servicio> servicios;  // Asegúrate de usar este nombre consistentemente
 
     public Vehiculo(String modelo, String marca, int year, double km) {
         this.modelo = modelo;
         this.marca = marca;
         this.year = year;
         this.km = km;
-        this.servicios = new ArrayList<>();
+        this.servicios = new ArrayList<>();  // Inicializa la lista de servicios
     }
 
+    // Métodos Getter
     public String getModelo() {
         return modelo;
     }
@@ -32,7 +33,44 @@ public class Vehiculo {
         return km;
     }
 
-    // Mantén los métodos de servicio
-    // ...
+    public ArrayList<Servicio> getServicios() {
+        return servicios;  // Devolver la lista de servicios
+    }
 
+    // Método para agregar un servicio
+    public void addServicio(Servicio servicio) {
+        servicios.add(servicio);
+    }
+
+    // Método para buscar un servicio por nombre
+    public Servicio buscarServicio(String nombre) {
+        for (Servicio servicio : servicios) {
+            if (servicio.getNombre().equals(nombre)) {
+                return servicio;  // Retorna el servicio encontrado
+            }
+        }
+        return null;  // Retorna null si no se encuentra el servicio
+    }
+
+    // Método para editar un servicio
+    public boolean editarServicio(String nombre, String nuevoNombre, int nuevoContador) {
+        Servicio servicio = buscarServicio(nombre);
+        if (servicio != null) {
+            // Suponiendo que tienes setters en Servicio
+            servicio.setNombre(nuevoNombre);
+            servicio.setContador(nuevoContador);
+            return true;  // Retorna true si se edita correctamente
+        }
+        return false;  // Retorna false si no se encuentra el servicio
+    }
+
+    // Método para eliminar un servicio por nombre
+    public boolean eliminarServicio(String nombre) {
+        Servicio servicio = buscarServicio(nombre);
+        if (servicio != null) {
+            servicios.remove(servicio);
+            return true;  // Retorna true si se elimina correctamente
+        }
+        return false;  // Retorna false si no se encuentra el servicio
+    }
 }
