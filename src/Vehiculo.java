@@ -6,7 +6,7 @@ public class Vehiculo {
     private String marca;
     private int year;
     private double km;
-    private ArrayList<Servicio> servicios;
+    private final ArrayList<Servicio> servicios; // Marcado como final
 
     public Vehiculo(String modelo, String marca, int year, double km) {
         this.modelo = modelo;
@@ -21,7 +21,7 @@ public class Vehiculo {
     }
 
     public void setModelo(String modelo) {
-        this.modelo = modelo;
+        this.modelo = modelo; // Este setter puede ser utilizado si se desea cambiar el modelo después
     }
 
     public String getMarca() {
@@ -29,7 +29,7 @@ public class Vehiculo {
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+        this.marca = marca; // Este setter puede ser utilizado si se desea cambiar la marca después
     }
 
     public int getYear() {
@@ -37,7 +37,7 @@ public class Vehiculo {
     }
 
     public void setYear(int year) {
-        this.year = year;
+        this.year = year; // Este setter puede ser utilizado si se desea cambiar el año después
     }
 
     public double getKm() {
@@ -45,47 +45,42 @@ public class Vehiculo {
     }
 
     public void setKm(double km) {
-        this.km = km;
+        this.km = km; // Este setter puede ser utilizado si se desea cambiar el kilometraje después
     }
 
     public ArrayList<Servicio> getServicios() {
         return servicios;
     }
 
-    // Método para agregar un servicio
     public void addServicio(Servicio servicio) {
         servicios.add(servicio);
     }
 
-    // Método para buscar un servicio por nombre
     public Servicio buscarServicio(String nombre) {
         for (Servicio servicio : servicios) {
             if (servicio.getNombre().equalsIgnoreCase(nombre)) {
                 return servicio;
             }
         }
-        return null; // Retorna null si no se encuentra
+        return null;
     }
 
-    // Método para editar un servicio
     public boolean editarServicio(String nombre, String nuevoNombre, int nuevoContador) {
         Servicio servicio = buscarServicio(nombre);
         if (servicio != null) {
-            // Cambiar los atributos del servicio encontrado
             servicio.setNombre(nuevoNombre);
             servicio.setContador(nuevoContador);
-            return true; // Edición exitosa
+            return true;
         }
-        return false; // Edición fallida
+        return false;
     }
 
-    // Método para eliminar un servicio
     public boolean eliminarServicio(String nombre) {
         Servicio servicio = buscarServicio(nombre);
         if (servicio != null) {
             servicios.remove(servicio);
-            return true; // Eliminación exitosa
+            return true;
         }
-        return false; // Eliminación fallida
+        return false;
     }
 }
