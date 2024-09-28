@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Vehiculo {
 
-    private String modelo;
-    private String marca;
-    private int year;
-    private double km;
+    private final String modelo;
+    private final  String marca;
+    private final int year;
+    private final double km;
     private final ArrayList<Servicio> servicios;
 
     public Vehiculo(String modelo, String marca, int year, double km) {
