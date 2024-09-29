@@ -2,46 +2,32 @@ import java.util.ArrayList;
 
 public class Vehiculo_controlador {
 
-    private final ArrayList<Vehiculo> vehiculos;
-
-    public Vehiculo_controlador() {
-        this.vehiculos = new ArrayList<>();
-    }
-
     public void agregarVehiculo(String modelo, String marca, int year, double km) {
-        Vehiculo vehiculo = new Vehiculo(modelo, marca, year, km);
-        vehiculos.add(vehiculo);
+        // Crear el nuevo vehículo
+        Vehiculo nuevoVehiculo = new Vehiculo(modelo, marca, year, km);
+
+        // Llamar al DAO para insertar el vehículo
+        VehiculoDAO.insertarVehiculo(nuevoVehiculo);
+
+        // Mostrar información al usuario
+        Vista.mostrarInformacion(nuevoVehiculo);
     }
 
-    public ArrayList<Vehiculo> obtenerVehiculos() {
-        return vehiculos;  // Retorna la lista de vehículos
+    public void editarVehiculo(int id, String nuevoModelo, String nuevaMarca, int nuevoYear, double nuevoKm) {
+        // Crear el objeto Vehiculo con el ID a editar
+        Vehiculo vehiculoEditar = new Vehiculo(nuevoModelo, nuevaMarca, nuevoYear, nuevoKm);
+        vehiculoEditar.setId(id);
+
+        // Llamar al DAO para editar el vehículo
+        VehiculoDAO.editarVehiculo(vehiculoEditar);
     }
 
-    public void agregarServicio(int vehiculoIndex, Servicio servicio) {
-        if (vehiculoIndex >= 0 && vehiculoIndex < vehiculos.size()) {
-            vehiculos.get(vehiculoIndex).addServicio(servicio);
-        }
+    public void eliminarVehiculo(int id) {
+        // Llamar al DAO para eliminar el vehículo
+        VehiculoDAO.eliminarVehiculo(id);
     }
 
-    public Servicio buscarServicio(int vehiculoIndex, String nombreServicio) {
-        if (vehiculoIndex >= 0 && vehiculoIndex < vehiculos.size()) {
-            return vehiculos.get(vehiculoIndex).buscarServicio(nombreServicio);
-        }
-        return null;
-    }
-
-    public boolean editarServicio(int vehiculoIndex, String nombreServicio, String nuevoNombre, int nuevoContador) {
-        if (vehiculoIndex >= 0 && vehiculoIndex < vehiculos.size()) {
-            return vehiculos.get(vehiculoIndex).editarServicio(nombreServicio, nuevoNombre, nuevoContador);
-        }
-        return false;
-    }
-
-    public boolean eliminarServicio(int vehiculoIndex, String nombreServicio) {
-        if (vehiculoIndex >= 0 && vehiculoIndex < vehiculos.size()) {
-            return vehiculos.get(vehiculoIndex).eliminarServicio(nombreServicio);
-        }
-        return false;
+    public ArrayList<Vehiculo> listarVehiculos() {
+        return VehiculoDAO.obtenerVehiculos();
     }
 }
- //amo a lui

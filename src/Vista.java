@@ -1,10 +1,10 @@
-class Vista {
-    public static void mostrarInformacion(Vehiculo Vehiculo) {
-        // Aquí solo formateamos y mostramos la información al usuario
+public class Vista {
+    public static void mostrarInformacion(Vehiculo vehiculo) {
         System.out.println("Información del Vehículo:");
-        System.out.println("Marca: " + Vehiculo.getMarca());
-        System.out.println("Modelo: " + Vehiculo.getModelo());
-        System.out.println("Año: " + Vehiculo.getYear());
+        System.out.println("ID: " + vehiculo.getId());
+        System.out.println("Marca: " + vehiculo.getMarca());
+        System.out.println("Modelo: " + vehiculo.getModelo());
+        System.out.println("Año: " + vehiculo.getYear());
+        System.out.println("Kilometraje: " + vehiculo.getKilometraje());
     }
-    
 }
