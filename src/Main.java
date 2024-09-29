@@ -10,6 +10,7 @@ public class Main {
         Vehiculo_controlador controlador = new Vehiculo_controlador();
 
         while (true) {
+            System.out.println("\n---------------\n");
             System.out.println("Seleccione una opción:");
             System.out.println("1. Agregar Vehículo");
             System.out.println("2. Editar Vehículo");
@@ -22,19 +23,20 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Ingrese modelo: ");
+                    System.out.print("\nIngrese modelo: ");
                     String modelo = scanner.nextLine();
                     System.out.print("Ingrese marca: ");
                     String marca = scanner.nextLine();
                     System.out.print("Ingrese año: ");
                     int anio = scanner.nextInt();
-                    System.out.print("Ingrese kilometraje: ");
+                    System.out.print("Ingrese kilometraje:");
                     double kilometraje = scanner.nextDouble();
+                    System.out.println("\n---------------\n");
                     controlador.agregarVehiculo(modelo, marca, anio, kilometraje);
                     break;
 
                 case 2:
-                    System.out.print("Ingrese ID del vehículo a editar: ");
+                    System.out.print("\nIngrese ID del vehículo a editar: ");
                     int idEditar = scanner.nextInt();
                     scanner.nextLine();  // Limpiar el buffer
                     System.out.print("Ingrese nuevo modelo: ");
@@ -43,31 +45,38 @@ public class Main {
                     String nuevaMarca = scanner.nextLine();
                     System.out.print("Ingrese nuevo año: ");
                     int nuevoYear = scanner.nextInt();
-                    System.out.print("Ingrese nuevo kilometraje: ");
+                    System.out.print("Ingrese nuevo kilometraje:");
                     double nuevoKilometraje = scanner.nextDouble();
+                    System.out.println("\n---------------\n");
+
                     controlador.editarVehiculo(idEditar, nuevoModelo, nuevaMarca, nuevoYear, nuevoKilometraje);
                     break;
 
                 case 3:
-                    System.out.print("Ingrese ID del vehículo a eliminar: ");
+                    System.out.print("\nIngrese ID del vehículo a eliminar: ");
                     int idEliminar = scanner.nextInt();
+                    System.out.println("---------------\n");
                     controlador.eliminarVehiculo(idEliminar);
                     break;
 
                 case 4:
+                    System.out.println("---------------\n");
                     ArrayList<Vehiculo> vehiculos = controlador.listarVehiculos();
                     for (Vehiculo v : vehiculos) {
                         Vista.mostrarInformacion(v);
+                        System.out.println("\n---------------\n");
+
                     }
                     break;
 
                 case 5:
+                    System.out.println("------------\n");
                     System.out.println("Saliendo...");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("\n\n\nOpción no válida.\n");
             }
         }
     }
