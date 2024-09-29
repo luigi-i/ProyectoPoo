@@ -46,7 +46,7 @@ public class VehiculoDAO {
                 int year = rsVehiculos.getInt("anio");
                 double kilometraje = rsVehiculos.getDouble("kilometraje");
 
-                Vehiculo vehiculo = new Vehiculo(modelo, marca, year, kilometraje);
+                Vehiculo vehiculo = new Vehiculo(vehiculoId, modelo, marca, year, kilometraje);
 
                 //obtener los servicios para este vehículo
                 PreparedStatement pstmtServicio = conn.prepareStatement(sqlServicios);
@@ -134,7 +134,7 @@ public class VehiculoDAO {
         limpiarBaseDeDatos();
 
         //
-        Vehiculo v = new Vehiculo("CR-V", "Honda", 2020, 12000);
+        Vehiculo v = new Vehiculo(1,"CR-V", "Honda", 2020, 12000);
         v.addServicio(new Servicio("Cambio de aceite", 1));
         v.addServicio(new Servicio("Alineación", 1));
 

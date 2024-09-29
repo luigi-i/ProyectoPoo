@@ -2,13 +2,15 @@ import java.util.ArrayList;
 
 public class Vehiculo {
 
+    private final int id; // ID del vehículo
     private final String modelo;
     private final  String marca;
     private final int year;
     private final  double km;
     private final ArrayList<Servicio> servicios;  // Asegúrate de usar este nombre consistentemente
 
-    public Vehiculo(String modelo, String marca, int year, double km) {
+    public Vehiculo(int id, String modelo, String marca, int year, double km) {
+        this.id = id; // se inicializa el ID
         this.modelo = modelo;
         this.marca = marca;
         this.year = year;
@@ -19,6 +21,7 @@ public class Vehiculo {
     }
 
     // Métodos Getter
+    public int getId() { return id; }
     public String getModelo() {
         return modelo;
     }
@@ -42,7 +45,7 @@ public class Vehiculo {
     // Método para agregar un servicio
     public void addServicio(Servicio servicio) {
         servicios.add(servicio);
-        VehiculoDAO.agregarServicio(1, servicio);
+        VehiculoDAO.agregarServicio(id, servicio);
     }
 
     // Método para buscar un servicio por nombre

@@ -8,8 +8,8 @@ public class Vehiculo_controlador {
         this.vehiculos = new ArrayList<>();
     }
 
-    public void agregarVehiculo(String modelo, String marca, int year, double km) {
-        Vehiculo vehiculo = new Vehiculo(modelo, marca, year, km);
+    public void agregarVehiculo(int id, String modelo, String marca, int year, double km) {
+        Vehiculo vehiculo = new Vehiculo(id,modelo, marca, year, km);
         vehiculos.add(vehiculo);
     }
 
