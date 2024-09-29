@@ -107,8 +107,4 @@ public class VehiculoDAO {
         }
         return vehiculos;
     }
-
-    public static void agregarServicio(String codigoUnico, Servicio servicio) {
-        // Aquí deberías implementar el método para agregar un servicio
-    }
 }

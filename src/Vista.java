@@ -7,4 +7,11 @@ public class Vista {
         System.out.println("Año: " + vehiculo.getYear());
         System.out.println("Kilometraje: " + vehiculo.getKilometraje());
     }
+
+    public static void mostrarInformacion(Servicio servicio) {
+        System.out.println("Información del Servicio:");
+        System.out.println("Nombre: " + servicio.getNombre());
+        System.out.println("Contador: " + servicio.getContador());
+        System.out.println("Vehículo ID: " + servicio.getVehiculoId());
+    }
 }
