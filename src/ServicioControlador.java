@@ -10,3 +10,4 @@ public class ServicioControlador {
     public ArrayList<Servicio> listarServicios(int vehiculoId) {
         return ServicioDAO.obtenerServiciosPorVehiculo(vehiculoId);
     }
+}
