@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Main {
+
     public static void main(String[] args) {
         // Crear base de datos y tablas
         VehiculoDAO.crearBaseDeDatos();
@@ -9,6 +11,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Vehiculo_controlador vehiculoControlador = new Vehiculo_controlador();
         ServicioControlador servicioControlador = new ServicioControlador();
+        System.out.println("\033c");
 
         while (true) {
             System.out.println("\n---------------\n");
@@ -20,6 +23,7 @@ public class Main {
             System.out.println("5. Agregar Servicio");
             System.out.println("6. Listar Servicios");
             System.out.println("7. Salir");
+
 
             int opcion = scanner.nextInt();
             scanner.nextLine();  // Limpiar el buffer
@@ -34,6 +38,8 @@ public class Main {
                     int anio = scanner.nextInt();
                     System.out.print("Ingrese kilometraje: ");
                     double kilometraje = scanner.nextDouble();
+                    System.out.println("\033c");
+
                     System.out.println("\n---------------\n");
                     vehiculoControlador.agregarVehiculo(modelo, marca, anio, kilometraje);
                     break;
@@ -50,6 +56,8 @@ public class Main {
                     int nuevoYear = scanner.nextInt();
                     System.out.print("Ingrese nuevo kilometraje: ");
                     double nuevoKilometraje = scanner.nextDouble();
+                    System.out.println("\033c");
+
                     System.out.println("\n---------------\n");
                     vehiculoControlador.editarVehiculo(idEditar, nuevoModelo, nuevaMarca, nuevoYear, nuevoKilometraje);
                     break;
@@ -58,6 +66,8 @@ public class Main {
                     System.out.print("\nIngrese ID del vehículo a eliminar: ");
                     int idEliminar = scanner.nextInt();
                     System.out.println("---------------\n");
+                    System.out.println("\033c");
+
                     vehiculoControlador.eliminarVehiculo(idEliminar);
                     break;
 
@@ -77,6 +87,8 @@ public class Main {
                     int contador = scanner.nextInt();
                     System.out.print("Ingrese ID del vehículo asociado: ");
                     int vehiculoIdServicio = scanner.nextInt();
+                    System.out.println("\033c");
+
                     servicioControlador.agregarServicio(nombreServicio, contador, vehiculoIdServicio);
                     break;
 
@@ -92,6 +104,7 @@ public class Main {
 
                 case 7:
                     System.out.println("------------\n");
+                    System.out.println("\033c");
                     System.out.println("Saliendo...");
                     scanner.close();
                     return;
