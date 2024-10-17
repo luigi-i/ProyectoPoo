@@ -18,9 +18,23 @@ public class VehiculoDAO {
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + " nombre TEXT NOT NULL,\n"
                 + " contador INTEGER NOT NULL,\n"
+                + " limite INTEGER NOT NULL,\n" // Añadir el nuevo atributo limite
                 + " vehiculo_id INTEGER NOT NULL,\n"
                 + " FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id)\n"
                 + ");";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sqlVehiculos);
+            stmt.execute(sqlServicios);
+            System.out.println("Tablas creadas correctamente");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+
 
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {

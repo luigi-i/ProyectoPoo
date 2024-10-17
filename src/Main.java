@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -23,7 +22,6 @@ public class Main {
             System.out.println("5. Agregar Servicio");
             System.out.println("6. Listar Servicios");
             System.out.println("7. Salir");
-
 
             int opcion = scanner.nextInt();
             scanner.nextLine();  // Limpiar el buffer
@@ -85,11 +83,13 @@ public class Main {
                     String nombreServicio = scanner.nextLine();
                     System.out.print("Ingrese contador: ");
                     int contador = scanner.nextInt();
+                    System.out.print("Ingrese límite: ");
+                    int limite = scanner.nextInt();
                     System.out.print("Ingrese ID del vehículo asociado: ");
                     int vehiculoIdServicio = scanner.nextInt();
                     System.out.println("\033c");
 
-                    servicioControlador.agregarServicio(nombreServicio, contador, vehiculoIdServicio);
+                    servicioControlador.agregarServicio(nombreServicio, contador, limite, vehiculoIdServicio);
                     break;
 
                 case 6:

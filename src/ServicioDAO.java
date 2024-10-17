@@ -5,13 +5,14 @@ public class ServicioDAO {
 
     public static void insertarServicio(Servicio servicio) {
         String url = "jdbc:sqlite:vehiculos.db";
-        String sql = "INSERT INTO servicios (nombre, contador, vehiculo_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO servicios (nombre, contador, limite, vehiculo_id) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, servicio.getNombre());
             pstmt.setInt(2, servicio.getContador());
-            pstmt.setInt(3, servicio.getVehiculoId());
+            pstmt.setInt(3, servicio.getLimite()); // Asegúrate de que se use el nuevo atributo limite
+            pstmt.setInt(4, servicio.getVehiculoId());
             pstmt.executeUpdate();
             System.out.println("Servicio agregado: " + servicio.getNombre());
         } catch (SQLException e) {
@@ -30,7 +31,12 @@ public class ServicioDAO {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Servicio servicio = new Servicio(rs.getString("nombre"), rs.getInt("contador"), rs.getInt("vehiculo_id"));
+                Servicio servicio = new Servicio(
+                        rs.getString("nombre"),
+                        rs.getInt("contador"),
+                        rs.getInt("limite"), // Obtener el limite desde la base de datos
+                        rs.getInt("vehiculo_id")
+                );
                 servicios.add(servicio);
             }
         } catch (SQLException e) {

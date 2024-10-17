@@ -12,6 +12,7 @@ public class Vista {
         System.out.println("Información del Servicio:");
         System.out.println("Nombre: " + servicio.getNombre());
         System.out.println("Contador: " + servicio.getContador());
+        System.out.println("Limite: " + servicio.getLimite()); // Mostrar límite
         System.out.println("Vehículo ID: " + servicio.getVehiculoId());
     }
 }
