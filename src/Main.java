@@ -80,7 +80,10 @@ import java.util.ArrayList;
                         break;
 
                     case 5:
-                        System.out.print("\nIngrese nombre del servicio: ");
+                        System.out.print("\nIngrese ID del servicio (0 para nuevo servicio): ");
+                        int idServicio = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Ingrese nombre del servicio: ");
                         String nombreServicio = scanner.nextLine();
                         System.out.print("Ingrese contador: ");
                         int contador = scanner.nextInt();
@@ -90,8 +93,11 @@ import java.util.ArrayList;
                         int vehiculoIdServicio = scanner.nextInt();
                         System.out.println("\033c");
 
-                        servicioControlador.agregarServicio(nombreServicio, contador, limite, vehiculoIdServicio);
+                        servicioControlador.agregarServicio(idServicio, nombreServicio, contador, limite, vehiculoIdServicio);
                         break;
+
+
+
 
                     case 6:
                         System.out.print("\nIngrese ID del vehículo para listar servicios: ");
