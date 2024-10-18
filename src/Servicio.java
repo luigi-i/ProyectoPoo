@@ -1,14 +1,24 @@
 public class Servicio {
+    private int id;
     private String nombre;
     private int contador;
     private int limite;
     private int vehiculoId;
 
-    public Servicio(String nombre, int contador, int limite, int vehiculoId) {
+    public Servicio(int id, String nombre, int contador, int limite, int vehiculoId) {
+        this.id = id;
         this.nombre = nombre;
         this.contador = contador;
         this.limite = limite;
         this.vehiculoId = vehiculoId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
