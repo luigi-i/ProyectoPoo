@@ -1,1 +1,2 @@
-Mirar los // que deje para el que vaya a hacer las sumas BESOS
+Como no se pueede agregar una columna asi como asi sin reiniciar la dataset con
+ALTER TABLE servicios ADD COLUMN limite INTEGER NOT NULL DEFAULT 0 se puede agregar la columna 

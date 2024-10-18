@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseSetup {
+
     public static void createNewDatabase() {
         String url = "jdbc:sqlite:vehiculos.db";
 
@@ -19,7 +20,7 @@ public class DatabaseSetup {
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + " nombre TEXT NOT NULL,\n"
                 + " contador INTEGER NOT NULL,\n"
-                + " limite INTEGER NOT NULL,\n"
+                + " limite INTEGER NOT NULL,\n"  // La columna limite ya está definida aquí
                 + " vehiculo_id INTEGER NOT NULL,\n"
                 + " FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id)\n"
                 + ");";
@@ -28,7 +29,7 @@ public class DatabaseSetup {
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlVehiculos);
             stmt.execute(sqlServicios);
-            System.out.println("Tablas creadas correctamente");
+            System.out.println("Tablas creadas correctamente con la columna 'limite' en 'servicios'.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -37,31 +38,19 @@ public class DatabaseSetup {
     public static void addLimiteColumnToServicios() {
         String url = "jdbc:sqlite:vehiculos.db";
 
+        String sqlAlter = "ALTER TABLE servicios ADD COLUMN limite INTEGER NOT NULL DEFAULT 0;";
+
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {
-            stmt.execute("CREATE TABLE IF NOT EXISTS servicios_temp (\n"
-                    + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
-                    + " nombre TEXT NOT NULL,\n"
-                    + " contador INTEGER NOT NULL,\n"
-                    + " limite INTEGER NOT NULL,\n"
-                    + " vehiculo_id INTEGER NOT NULL,\n"
-                    + " FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id)\n"
-                    + ");");
-
-            stmt.execute("INSERT INTO servicios_temp (nombre, contador, vehiculo_id) "
-                    + "SELECT nombre, contador, vehiculo_id FROM servicios;");
-
-            stmt.execute("DROP TABLE IF EXISTS servicios;");
-
-            stmt.execute("ALTER TABLE servicios_temp RENAME TO servicios;");
-
+            stmt.execute(sqlAlter);
             System.out.println("Columna 'limite' añadida a la tabla 'servicios' exitosamente.");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error al añadir la columna 'limite': " + e.getMessage());
         }
     }
 
     public static void main(String[] args) {
-        addLimiteColumnToServicios();
+        createNewDatabase();  // Crear las tablas si no existen
+        addLimiteColumnToServicios();  // Añadir la columna 'limite' si no está presente
     }
 }
