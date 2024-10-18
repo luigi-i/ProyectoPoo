@@ -45,6 +45,45 @@ public class VehiculoDAO {
             System.out.println(e.getMessage());
         }
     }
+    public static Vehiculo obtenerVehiculoPorId(int id) {
+        String url = "jdbc:sqlite:vehiculos.db";
+        String sql = "SELECT * FROM vehiculos WHERE id = ?";
+        Vehiculo vehiculo = null;
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                vehiculo = new Vehiculo(
+                        rs.getString("modelo"),
+                        rs.getString("marca"),
+                        rs.getInt("anio"),
+                        rs.getDouble("kilometraje")
+                );
+                vehiculo.setId(rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return vehiculo;
+    }
+    public static void actualizarKilometraje(Vehiculo v) {
+        String url = "jdbc:sqlite:vehiculos.db";
+        String sql = "UPDATE vehiculos SET kilometraje = ? WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDouble(1, v.getKilometraje());
+            pstmt.setInt(2, v.getId());
+            pstmt.executeUpdate();
+            System.out.println("Kilometraje actualizado para el vehículo ID: " + v.getId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public static void insertarVehiculo(Vehiculo v) {
         String url = "jdbc:sqlite:vehiculos.db";

@@ -30,4 +30,20 @@ public class Vehiculo_controlador {
     public ArrayList<Vehiculo> listarVehiculos() {
         return VehiculoDAO.obtenerVehiculos();
     }
-}
+    public void aumentarKilometraje(int id, double kmAumentar) {
+        // Obtener el vehículo por ID
+        Vehiculo vehiculo = VehiculoDAO.obtenerVehiculoPorId(id);
+
+        // Verificar que el vehículo exista
+        if (vehiculo != null) {
+            // Aumentar el kilometraje
+            vehiculo.setKilometraje(vehiculo.getKilometraje() + kmAumentar);
+
+            // Actualizar en la base de datos
+            VehiculoDAO.actualizarKilometraje(vehiculo);
+            System.out.println("Kilometraje actualizado: " + vehiculo.getKilometraje());
+        } else {
+            System.out.println("El vehículo con ID " + id + " no existe.");
+        }
+    }}
+
