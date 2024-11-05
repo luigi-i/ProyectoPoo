@@ -95,18 +95,15 @@ import java.util.ArrayList;
                         int vehiculoIdServicio = scanner.nextInt();
                         System.out.println("\033c");
 
-                        servicioControlador.agregarServicio(idServicio, nombreServicio, contador, limite, vehiculoIdServicio);
+                        System.out.println(servicioControlador.agregarServicio(idServicio, nombreServicio, contador, limite, vehiculoIdServicio));
                         break;
-
-
-
 
                     case 6:
                         System.out.print("\nIngrese ID del vehículo para listar servicios: ");
                         int idVehiculo = scanner.nextInt();
                         ArrayList<Servicio> servicios = servicioControlador.listarServicios(idVehiculo);
                         for (Servicio s : servicios) {
-                            Vista.mostrarInformacion(s);
+                            System.out.println(Vista.mostrarInformacion(s));
                             System.out.println("\n---------------\n");
                         }
                         break;
@@ -117,7 +114,7 @@ import java.util.ArrayList;
                         double kmAumentar = scanner.nextDouble();
                         System.out.println("\033c");
 
-                        vehiculoControlador.aumentarKilometraje(idVehiculoKm, kmAumentar);
+                        System.out.println(vehiculoControlador.aumentarKilometraje(idVehiculoKm, kmAumentar));
                         break;
                     case 8:
                         System.out.println("------------\n");

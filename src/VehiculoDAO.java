@@ -59,7 +59,7 @@ public class VehiculoDAO {
         return vehiculo;
     }
 
-    public static void actualizarKilometraje(Vehiculo v) {
+    public static String actualizarKilometraje(Vehiculo v) {
         String url = "jdbc:sqlite:vehiculos.db";
         String sql = "UPDATE vehiculos SET kilometraje = ? WHERE id = ?";
 
@@ -68,9 +68,9 @@ public class VehiculoDAO {
             pstmt.setDouble(1, v.getKilometraje());
             pstmt.setInt(2, v.getId());
             pstmt.executeUpdate();
-            System.out.println("Kilometraje actualizado para el vehículo ID: " + v.getId());
+            return "Kilometraje actualizado para el vehículo ID: " + v.getId();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 

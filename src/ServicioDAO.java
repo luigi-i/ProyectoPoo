@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class ServicioDAO {
 
     // Método para insertar un nuevo servicio
-    public static void insertarServicio(Servicio servicio) {
+    public static String insertarServicio(Servicio servicio) {
         String url = "jdbc:sqlite:vehiculos.db";
         String sql = "INSERT INTO servicios (nombre, contador, limite, vehiculo_id) VALUES (?, ?, ?, ?)";
 
@@ -15,9 +15,9 @@ public class ServicioDAO {
             pstmt.setInt(3, servicio.getLimite()); // Asegúrate de que se use el nuevo atributo limite
             pstmt.setInt(4, servicio.getVehiculoId());
             pstmt.executeUpdate();
-            System.out.println("Servicio agregado: " + servicio.getNombre());
+            return "Servicio agregado: " + servicio.getNombre();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
@@ -50,7 +50,7 @@ public class ServicioDAO {
     }
 
     // Método para actualizar un servicio existente
-    public static void actualizarServicio(Servicio servicio) {
+    public static String actualizarServicio(Servicio servicio) {
         String url = "jdbc:sqlite:vehiculos.db";
         String sql = "UPDATE servicios SET nombre = ?, contador = ?, limite = ?, vehiculo_id = ? WHERE id = ?";
 
@@ -62,9 +62,9 @@ public class ServicioDAO {
             pstmt.setInt(4, servicio.getVehiculoId());
             pstmt.setInt(5, servicio.getId());  // Asumiendo que Servicio tiene un método getId
             pstmt.executeUpdate();
-            System.out.println("Servicio actualizado con ID: " + servicio.getId());
+            return "\nServicio actualizado con ID: " + servicio.getId();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 

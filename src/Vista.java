@@ -12,11 +12,16 @@ public class Vista {
         return vistaOut1;
     }
 
-    public static void mostrarInformacion(Servicio servicio) {
-        System.out.println("Información del Servicio:");
-        System.out.println("Nombre: " + servicio.getNombre());
-        System.out.println("Contador: " + servicio.getContador());
-        System.out.println("Limite: " + servicio.getLimite()); // Mostrar límite
-        System.out.println("Vehículo ID: " + servicio.getVehiculoId());
+    public static String mostrarInformacion(Servicio servicio) {
+
+        String vistaOut2 = "";
+
+        vistaOut2 += "Información del Servicio:";
+        vistaOut2 +="\nNombre: " + servicio.getNombre();
+        vistaOut2 +="\nContador: " + servicio.getContador();
+        vistaOut2 +="\nLimite: " + servicio.getLimite(); // Mostrar límite
+        vistaOut2 +="\nVehículo ID: " + servicio.getVehiculoId();
+
+        return vistaOut2;
     }
 }

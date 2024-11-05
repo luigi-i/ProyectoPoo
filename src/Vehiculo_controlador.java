@@ -34,8 +34,11 @@ public class Vehiculo_controlador {
         return VehiculoDAO.obtenerVehiculos();
     }
 
-    public void aumentarKilometraje(int id, double kmAumentar) {
+    public String aumentarKilometraje(int id, double kmAumentar) {
         // Obtener el vehículo por ID
+
+        String vCplus = "";
+
         Vehiculo vehiculo = VehiculoDAO.obtenerVehiculoPorId(id);
 
         // Verificar que el vehículo exista
@@ -44,15 +47,16 @@ public class Vehiculo_controlador {
             vehiculo.setKilometraje(vehiculo.getKilometraje() + kmAumentar);
 
             // Actualizar en la base de datos
-            VehiculoDAO.actualizarKilometraje(vehiculo);
-            System.out.println("Kilometraje del vehículo actualizado: " + vehiculo.getKilometraje());
+            vCplus += VehiculoDAO.actualizarKilometraje(vehiculo);
+            vCplus += "\nKilometraje del vehículo actualizado: " + vehiculo.getKilometraje();
 
             // Actualizar kilometraje de los servicios asociados
             ArrayList<Servicio> servicios = ServicioDAO.obtenerServiciosPorVehiculoId(vehiculo.getId());
             for (Servicio servicio : servicios) {
                 servicio.setContador(servicio.getContador() + (int) kmAumentar); // Ajusta según necesites
-                ServicioDAO.actualizarServicio(servicio); // Método que necesitas implementar para actualizar el servicio
+                vCplus += ServicioDAO.actualizarServicio(servicio); // Método que necesitas implementar para actualizar el servicio
             }
         }
+        return vCplus;
     }
 }
