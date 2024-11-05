@@ -1,29 +1,33 @@
 import java.util.ArrayList;
 
 public class Vehiculo_controlador {
-    public void agregarVehiculo(String modelo, String marca, int year, double km) {
+    public String agregarVehiculo(String modelo, String marca, int year, double km) {
         // Crear el nuevo vehículo
+
+        String vCAgregarV ="";
         Vehiculo nuevoVehiculo = new Vehiculo(modelo, marca, year, km);
 
         // Llamar al DAO para insertar el vehículo
-        VehiculoDAO.insertarVehiculo(nuevoVehiculo);
+        vCAgregarV += VehiculoDAO.insertarVehiculo(nuevoVehiculo);
 
         // Mostrar información al usuario
-        Vista.mostrarInformacion(nuevoVehiculo);
+        vCAgregarV += Vista.mostrarInformacion(nuevoVehiculo);
+
+        return vCAgregarV;
     }
 
-    public void editarVehiculo(int id, String nuevoModelo, String nuevaMarca, int nuevoYear, double nuevoKm) {
+    public String editarVehiculo(int id, String nuevoModelo, String nuevaMarca, int nuevoYear, double nuevoKm) {
         // Crear el objeto Vehiculo con el ID a editar
         Vehiculo vehiculoEditar = new Vehiculo(nuevoModelo, nuevaMarca, nuevoYear, nuevoKm);
         vehiculoEditar.setId(id);
 
         // Llamar al DAO para editar el vehículo
-        VehiculoDAO.editarVehiculo(vehiculoEditar);
+        return VehiculoDAO.editarVehiculo(vehiculoEditar);
     }
 
-    public void eliminarVehiculo(int id) {
+    public String eliminarVehiculo(int id) {
         // Llamar al DAO para eliminar el vehículo
-        VehiculoDAO.eliminarVehiculo(id);
+        return VehiculoDAO.eliminarVehiculo(id);
     }
 
     public ArrayList<Vehiculo> listarVehiculos() {

@@ -1,11 +1,15 @@
 public class Vista {
-    public static void mostrarInformacion(Vehiculo vehiculo) {
-        System.out.println("Información del Vehículo:");
-        System.out.println("ID: " + vehiculo.getId());
-        System.out.println("Marca: " + vehiculo.getMarca());
-        System.out.println("Modelo: " + vehiculo.getModelo());
-        System.out.println("Año: " + vehiculo.getYear());
-        System.out.println("Kilometraje: " + vehiculo.getKilometraje());
+    public static String mostrarInformacion(Vehiculo vehiculo) {
+
+        String vistaOut1 = "";
+        vistaOut1 += "\nInformación del Vehículo:";
+        vistaOut1 += "\nID: " + vehiculo.getId();
+        vistaOut1 += "\nMarca: " + vehiculo.getMarca();
+        vistaOut1 += "\nModelo: " + vehiculo.getModelo();
+        vistaOut1 +="\nAño: " + vehiculo.getYear();
+        vistaOut1 +="\nKilometraje: " + vehiculo.getKilometraje();
+
+        return vistaOut1;
     }
 
     public static void mostrarInformacion(Servicio servicio) {

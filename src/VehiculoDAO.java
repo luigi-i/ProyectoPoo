@@ -74,7 +74,7 @@ public class VehiculoDAO {
         }
     }
 
-    public static void insertarVehiculo(Vehiculo v) {
+    public static String insertarVehiculo(Vehiculo v) {
         String url = "jdbc:sqlite:vehiculos.db";
         String sql = "INSERT INTO vehiculos (modelo, marca, anio, kilometraje) VALUES (?, ?, ?, ?)";
 
@@ -92,13 +92,14 @@ public class VehiculoDAO {
                 v.setId(rs.getInt(1));
             }
 
-            System.out.println("Vehículo agregado: " + v.getModelo());
+            return "Vehículo agregado: " + v.getModelo();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return  "Error al agregar vehículo: " + e.getMessage();
+
         }
     }
 
-    public static void editarVehiculo(Vehiculo v) {
+    public static String editarVehiculo(Vehiculo v) {
         String url = "jdbc:sqlite:vehiculos.db";
         String sql = "UPDATE vehiculos SET modelo = ?, marca = ?, anio = ?, kilometraje = ? WHERE id = ?";
 
@@ -110,13 +111,13 @@ public class VehiculoDAO {
             pstmt.setDouble(4, v.getKilometraje());
             pstmt.setInt(5, v.getId());
             pstmt.executeUpdate();
-            System.out.println("Vehículo editado: " + v.getModelo());
+            return "Vehículo editado: " + v.getModelo();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
-    public static void eliminarVehiculo(int id) {
+    public static String eliminarVehiculo(int id) {
         // Eliminar servicios relacionados
         eliminarServiciosPorVehiculoId(id);
 
@@ -127,9 +128,9 @@ public class VehiculoDAO {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
-            System.out.println("Vehículo eliminado con ID: " + id);
+            return "Vehículo eliminado con ID: " + id;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 

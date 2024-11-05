@@ -40,7 +40,7 @@ import java.util.ArrayList;
                         System.out.println("\033c");
 
                         System.out.println("\n---------------\n");
-                        vehiculoControlador.agregarVehiculo(modelo, marca, anio, kilometraje);
+                        System.out.println(vehiculoControlador.agregarVehiculo(modelo, marca, anio, kilometraje));
                         break;
 
                     case 2:
@@ -58,7 +58,7 @@ import java.util.ArrayList;
                         System.out.println("\033c");
 
                         System.out.println("\n---------------\n");
-                        vehiculoControlador.editarVehiculo(idEditar, nuevoModelo, nuevaMarca, nuevoYear, nuevoKilometraje);
+                        System.out.println(vehiculoControlador.editarVehiculo(idEditar, nuevoModelo, nuevaMarca, nuevoYear, nuevoKilometraje));
                         break;
 
                     case 3:
@@ -67,14 +67,14 @@ import java.util.ArrayList;
                         System.out.println("---------------\n");
                         System.out.println("\033c");
 
-                        vehiculoControlador.eliminarVehiculo(idEliminar);
+                        System.out.println(vehiculoControlador.eliminarVehiculo(idEliminar));
                         break;
 
                     case 4:
                         System.out.println("---------------\n");
                         ArrayList<Vehiculo> vehiculos = vehiculoControlador.listarVehiculos();
                         for (Vehiculo v : vehiculos) {
-                            Vista.mostrarInformacion(v);
+                            System.out.println(Vista.mostrarInformacion(v));
                             System.out.println("\n---------------\n");
                         }
                         break;
