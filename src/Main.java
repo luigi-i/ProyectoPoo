@@ -12,7 +12,9 @@ import java.util.ArrayList;
             ServicioControlador servicioControlador = new ServicioControlador();
             System.out.println("\033c");
 
-            while (true) {
+            boolean seguir = true;
+
+            while (seguir) {
                 System.out.println("\n---------------\n");
                 System.out.println("Seleccione una opción:");
                 System.out.println("1. Agregar Vehículo");
@@ -85,7 +87,7 @@ import java.util.ArrayList;
                         scanner.nextLine();
                         System.out.print("Ingrese nombre del servicio: ");
                         String nombreServicio = scanner.nextLine();
-                        System.out.print("Ingrese contador: ");
+                          System.out.print("Ingrese contador: ");
                         int contador = scanner.nextInt();
                         System.out.print("Ingrese límite: ");
                         int limite = scanner.nextInt();
@@ -122,6 +124,7 @@ import java.util.ArrayList;
                         System.out.println("\033c");
                         System.out.println("Saliendo...");
                         scanner.close();
+                        seguir = false;
                         return;
                     default:
                         System.out.println("\n\n\nOpción no válida.\n");
