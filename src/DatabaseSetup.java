@@ -29,8 +29,10 @@ public class DatabaseSetup {
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlVehiculos);
             stmt.execute(sqlServicios);
-            System.out.println("Tablas creadas correctamente con la columna 'limite' en 'servicios'.");
-        } catch (SQLException e) {
+        }
+
+        catch (SQLException e)
+        {
             System.out.println(e.getMessage());
         }
     }
@@ -43,9 +45,10 @@ public class DatabaseSetup {
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlAlter);
-            System.out.println("Columna 'limite' añadida a la tabla 'servicios' exitosamente.");
-        } catch (SQLException e) {
-            System.out.println("Error al añadir la columna 'limite': " + e.getMessage());
+        }
+
+        catch (SQLException e) {
+
         }
     }
 
@@ -53,4 +56,5 @@ public class DatabaseSetup {
         createNewDatabase();  // Crear las tablas si no existen
         addLimiteColumnToServicios();  // Añadir la columna 'limite' si no está presente
     }
+
 }

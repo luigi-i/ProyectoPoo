@@ -43,8 +43,11 @@ public class ServicioDAO {
                 );
                 servicios.add(servicio);
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+
+        }
+        catch (SQLException e) {
+
         }
         return servicios;
     }

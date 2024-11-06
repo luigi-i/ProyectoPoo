@@ -27,7 +27,6 @@ public class VehiculoDAO {
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlVehiculos);
             stmt.execute(sqlServicios);
-            System.out.println("Tablas creadas correctamente");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
