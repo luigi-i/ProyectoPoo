@@ -63,7 +63,7 @@ public class ServicioDAO {
             pstmt.setInt(2, servicio.getContador());
             pstmt.setInt(3, servicio.getLimite());
             pstmt.setInt(4, servicio.getVehiculoId());
-            pstmt.setInt(5, servicio.getId());  // Asumiendo que Servicio tiene un método getId
+            pstmt.setInt(5, servicio.getId());
             pstmt.executeUpdate();
             return "\nServicio actualizado con ID: " + servicio.getId();
         } catch (SQLException e) {
